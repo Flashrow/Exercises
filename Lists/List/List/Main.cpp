@@ -62,3 +62,11 @@ void addSorted(element * & head, T val) {
 	else
 		addToFront(head, val);
 }
+
+void addSortedReq(element * & head, T val) {
+	if (head) {
+		if(head->value>=val)
+		addSortedReq(head->pNext, val);
+	}
+
+}

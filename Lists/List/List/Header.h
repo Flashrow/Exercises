@@ -9,4 +9,5 @@ void addToFront(element *&head, T val);
 void printFromStart(element * head);
 void addRandom(element *& head);
 void addSorted(element * & head, T val);
+void addSortedReq(element * & head, T val);
 #endif // !HEADER_H
