@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
 	deleteElement(head, head);
 
 	printFromStart(head);
+	deleteList(head);
+	deleteList(head);
 
 	 cin.get();
 	 return 0;
@@ -137,5 +139,54 @@ void deleteElement(element *&head, element *toDelete) {
 		}
 		headBefore = headB;
 		headB = headB->pNext;
+	}
+}
+
+void deleteElement(element *&head, T val){
+	element * headB = head;
+	element * headBefore = head;
+	if (head) {
+		if (head->value == val) {
+			head = headB->pNext;
+			delete(headB);
+		}
+		else
+		while (headB) {
+			if (headB->value == val) {
+				headBefore->pNext = headB->pNext;
+				delete(headB);
+				break;
+			}
+			headBefore = headB;
+			headB = headB->pNext;
+		}
+	}
+}
+
+void deleteElements(element *&head, T val) {
+	element * headB = head;
+	element * headBefore = head;
+	if (head) {
+		if (head->value == val) {
+			head = headB->pNext;
+			delete(headB);
+		}
+		else
+			while (headB) {
+				if (headB->value == val) {
+					headBefore->pNext = headB->pNext;
+					delete(headB);
+				}
+				headBefore = headB;
+				headB = headB->pNext;
+			}
+	}
+}
+
+void deleteList(element *&head) {
+	if (head) {
+		deleteList(head->pNext);
+		delete(head);
+		head = nullptr;
 	}
 }

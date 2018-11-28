@@ -16,4 +16,7 @@ void printFromEndReq(element * head, std::ostream&);
 element *findE(element * head, int val);
 element *findEReq(element * & head, int val);
 void deleteElement(element *&head, element *toDelete);
+void deleteElement(element *&head, T val); 
+void deleteElements(element *&head, T val);
+void deleteList(element *&head);
 #endif // !HEADER_H
