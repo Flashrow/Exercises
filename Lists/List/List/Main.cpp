@@ -32,6 +32,22 @@ int main(int argc, char *argv[]) {
 	deleteList(head);
 	deleteList(head);
 
+	for (auto i : { 2,4,6,21,4,64,23,4,13,4 })
+	addToFront(head, i);
+
+	cout << endl << endl;
+	printFromStart(head); cout << endl;
+	deleteElements(head,4);
+	printFromStart(head);
+	cout << endl<<endl;
+
+	swapList(head);
+	printFromStart(head); cout << endl;
+	swapList(head);
+	printFromStart(head);
+	cout << endl << endl;
+
+
 	 cin.get();
 	 return 0;
 }
@@ -165,21 +181,24 @@ void deleteElement(element *&head, T val){
 
 void deleteElements(element *&head, T val) {
 	element * headB = head;
-	element * headBefore = head;
 	if (head) {
 		if (head->value == val) {
 			head = headB->pNext;
 			delete(headB);
 		}
-		else
-			while (headB) {
-				if (headB->value == val) {
-					headBefore->pNext = headB->pNext;
-					delete(headB);
-				}
+		headB = head;
+		element * headBefore = head;
+		while (headB) {
+			if (headB->value == val) {
+				headBefore->pNext = headB->pNext;
+				delete(headB);
+				headB = headBefore->pNext;
+			}
+			else {
 				headBefore = headB;
 				headB = headB->pNext;
 			}
+		}
 	}
 }
 
@@ -189,4 +208,22 @@ void deleteList(element *&head) {
 		delete(head);
 		head = nullptr;
 	}
+}
+
+void swapList(element *&head) {
+	element *headBefore = head;
+	element *headB = head->pNext;
+	head->pNext= nullptr;
+	head = headB;
+	while (head) {
+		headB = head->pNext;
+		head->pNext = headBefore;
+		headBefore = head;
+		head = headB;
+	}
+	head = headBefore;
+}
+
+void removeRepetition(element *&head) {
+
 }
