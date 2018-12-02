@@ -21,4 +21,5 @@ void deleteElements(element *&head, T val);
 void deleteList(element *&head);
 void swapList(element *&head);
 void removeRepetition(element *&head);
+element *getElement(element *head, int N);
 #endif // !HEADER_H

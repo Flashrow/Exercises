@@ -48,6 +48,19 @@ int main(int argc, char *argv[]) {
 	cout << endl << endl;
 
 
+	deleteList(head);
+	for (auto i : { 1,2,3,4,5,6,7,8,9,10 })
+		addToFront(head, i);
+	printFromStart(head); cout << endl;
+	cout << getElement(head, 3)->value; cout << endl << endl;
+
+	deleteList(head);
+	for (auto i : { 1,2,3,3,4,5,3,6,2,2,6,8,9,11 })
+		addToFront(head, i);
+	printFromStart(head); cout << endl;
+	removeRepetition(head);
+	printFromStart(head); cout << endl << endl;
+
 	 cin.get();
 	 return 0;
 }
@@ -224,6 +237,24 @@ void swapList(element *&head) {
 	head = headBefore;
 }
 
+//TODO
 void removeRepetition(element *&head) {
+	element *headB=head;
+	element *repetitionHead = nullptr;
+	while (headB) {
+		if (findE(repetitionHead, headB->value))
+			deleteElement(head, headB);
+		else
+			addSorted(repetitionHead, headB->value);
+		//headB = headB->pNext;
+	}
+}
 
+element *getElement(element *head, int N) {
+	for (int i = 0; i < N-1; i++)
+		if (head)
+			head = head->pNext;
+		else
+			return nullptr;
+	return head;
 }
